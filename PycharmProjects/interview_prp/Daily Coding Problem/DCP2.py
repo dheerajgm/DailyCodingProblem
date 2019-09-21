@@ -24,3 +24,34 @@ def mularrayelements(A):
     return A1
 
 print(mularrayelements(A))
+
+arr = A
+
+def usingDivision(arr):
+    product = 1
+    for number in arr:
+        product *= number
+
+    prod = [product//x for x in arr]
+    return prod
+
+def withoutdivision(arr):
+    l = len(arr)
+    left = [1 for _ in range(l)]
+    right = [1 for _ in range(l)]
+    prod = [1 for _ in range(l)]
+
+    for i in range(1,l):
+        left[i] = arr[i-1] * left[i-1]
+
+    for i in range(l-2, -1, -1):
+        right[i] = arr[i+1] * right[i+1]
+
+    for i in range(l):
+        prod[i] = left[i] * right[i]
+
+    return prod
+
+usingDivision(arr)
+
+withoutdivision(arr)
